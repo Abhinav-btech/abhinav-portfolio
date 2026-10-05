@@ -6,12 +6,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #080b12;
   color: #f5f7ff;
+  overflow-x: hidden;
 }
 
 a {
@@ -21,11 +23,10 @@ a {
 
 .app {
   min-height: 100vh;
-  background:
-    linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px),
-    #080b12;
-  background-size: 50px 50px;
+  width: 100%;
+  overflow-x: hidden;
+
+ background: #080b12;
 }
 
 /* NAVBAR */
@@ -94,6 +95,15 @@ a {
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 60px;
+
+  /* FIX: unwanted horizontal overflow */
+  overflow: hidden;
+}
+
+.hero-content {
+  min-width: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-small,
@@ -110,10 +120,20 @@ a {
   line-height: 0.95;
   letter-spacing: -5px;
   margin-bottom: 25px;
+
+  /* FIX: keep Abhinav visible */
+  color: #f5f7ff;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 5;
 }
 
 .hero h1 span {
   color: #38bdf8;
+  font-size: inherit;
+  opacity: 1;
+  visibility: visible;
 }
 
 .hero h2 {
@@ -189,6 +209,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  min-width: 0;
 }
 
 .profile-box {
@@ -666,6 +688,8 @@ a {
 
   .hero h1 {
     font-size: 55px;
+    letter-spacing: -3px;
+    white-space: normal;
   }
 
   .hero h2 {
@@ -733,4 +757,28 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #38bdf8;
+}
+/* REMOVE SIDE VERTICAL LINES */
+html,
+body,
+#root,
+.app {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  outline: 0 !important;
+}
+
+html::before,
+html::after,
+body::before,
+body::after,
+#root::before,
+#root::after,
+.app::before,
+.app::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
 }

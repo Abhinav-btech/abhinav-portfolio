@@ -19,10 +19,10 @@ function App() {
           <a href="#education">Journey</a>
           <a href="#contact">Contact</a>
         </div>
-
-        <a href="/resume.pdf" download className="nav-btn">
-          Resume ↓
-        </a>
+<a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+  Resume
+</a>
+        
       </nav>
 
       {/* HERO */}
